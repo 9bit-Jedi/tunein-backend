@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','10.81.66.245']
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://10.81.66.245:5173",
+]
 
 # Application definition
 
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
     "debug_toolbar",
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'tuneinBackend.urls'
