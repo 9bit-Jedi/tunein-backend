@@ -135,7 +135,7 @@ class MyRoom(APIView):
 
 
 class LeaveRoom(APIView):
-  def get(self, request, format=None):
+  def post(self, request, format=None):
     if 'room_code' in self.request.session:
       self.request.session.pop('room_code')
       listener, _ = Listener.objects.get_or_create(session_key=self.request.session.session_key)
@@ -148,5 +148,3 @@ class LeaveRoom(APIView):
         room.delete()
     
     return Response({'Message': 'Success'}, status=status.HTTP_200_OK)
-
-
