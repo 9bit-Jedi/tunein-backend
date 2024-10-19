@@ -2,7 +2,7 @@ from rest_framework import serializers
 from api.models import Room
 
 # GET method - getting room details
-class Roomserializer(serializers.ModelSerializer):    
+class RoomSerializer(serializers.ModelSerializer):    
   class Meta:
     model = Room
     fields = ('id', 'code', 'host', 'guest_can_pause', 'votes_to_skip')
