@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-o*ln_@*91_ea-3zm9!jgbkz_k9c^-$=(2r$pftuio8tdhx8r9^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','10.81.66.245', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1','10.81.66.245', ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
     "debug_toolbar",
-    'corsheaders',
+    'corsheaders',    
+    'django_redis',
 ]
 
 MIDDLEWARE = [
@@ -92,6 +93,15 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://localhost:6379/1",  # Adjust the location as needed
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

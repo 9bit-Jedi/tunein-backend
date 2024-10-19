@@ -1,14 +1,28 @@
 from rest_framework import serializers
-from api.models import Room
+from api.models import *
 
 # GET method - getting room details
-class RoomSerializer(serializers.ModelSerializer):    
+
+
+class TrackSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Track
+    fields = '__all__'
+    
+class ListenerSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Listener
+    fields = '__all__'
+
+class RoomSerializer(serializers.ModelSerializer):
+  listeners = ListenerSerializer(many=True)
+  current_track = TrackSerializer()
   class Meta:
     model = Room
-    fields = ('id', 'code', 'host', 'guest_can_pause', 'votes_to_skip')
+    fields = ('code', 'host','name','description', 'listeners', 'guest_controls', 'current_track', 'current_time', 'is_playing', 'created_at')
     
 # GET method - getting room details
 class CreateRoomSerializer(serializers.ModelSerializer):    
   class Meta:
     model = Room
-    fields = ('guest_can_pause', 'votes_to_skip')
+    fields = ('name','guest_controls', 'description')
