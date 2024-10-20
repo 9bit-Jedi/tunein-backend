@@ -4,9 +4,10 @@
 
 - **Framework**: Django (Python)
 - **Database**: Sqlite3
-- **Socket Connection**: Socket.IO
+- **Socket Connection**: Node, WebSocket
 - **API Layer**: Django REST Framework (DRF)
 - **Virtual Environment**: `venv` (Python built-in)
+- **Frontend**: React + MUI
 
 ---
 
@@ -89,6 +90,31 @@ By default, the server will be running on `http://127.0.0.1:8000/`.
 
 ---
 
+## Setting Up the WebSocket Server
+
+### Install Node.js Dependencies
+
+1. Navigate to the WebSocket server folder:
+
+   ```bash
+   cd websocket-server
+   ```
+
+2. Initialize the project:
+
+   ```bash
+   npm install
+   ```
+
+### Run the WebSocket Server
+
+```bash
+node server.js
+```
+
+The WebSocket server will run at `ws://localhost:8080/`.
+
+---
 
 ## Git Workflow
 
